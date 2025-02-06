@@ -1,7 +1,9 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
+
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
 vim.schedule(function()
@@ -58,9 +60,14 @@ require('lazy').setup({
 
   {
     'ayu-theme/ayu-vim',
-    config = function()
-      vim.g.ayucolor = 'mirage'
+    init = function()
+      vim.g.termguicolors = true
+      vim.g.ayucolor = 'dark'
       vim.cmd.colorscheme 'ayu'
+
+      vim.api.nvim_set_hl(0, 'Normal', { bg = '#000000', fg = '#ffffff' })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#000000', fg = '#ffffff' })
+      vim.api.nvim_set_hl(0, 'SignColumn', { bg = '#000000', fg = '#ffffff' })
     end,
   },
 
